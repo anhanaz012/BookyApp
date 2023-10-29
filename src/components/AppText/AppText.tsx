@@ -1,56 +1,32 @@
-import React, { useEffect } from 'react';
-import { Text } from 'react-native';
-import { COLORS, STYLES, TYPOGRAPHY } from 'src/assets/theme';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AppTextProps } from 'src/types/AppTextTypes';
-import Wrapper from '../Wrapper/Wrapper';
-import i18n from 'src/i18n';
+import {Text} from 'react-native';
+import {AppTextProps} from 'src/types/AppTextTypes';
+import {styles} from './styles';
+import {COLORS, STYLES, TYPOGRAPHY} from 'src/assets/theme';
 
 const AppText: React.FC<AppTextProps> = props => {
-
   const {
-    title,
-    variant,
-    children = <></>,
-    color = '',
-    alignSelf = 'flex-start',
-    fontSize = 0,
+    title = '',
+    variant = 'body1',
+    theme = 'dark',
+    color = COLORS[theme].text,
     extraStyle = {},
-    onPress = () => { },
-    theme,
-    translation = true
+    children = null,
+    alignSelf = 'flex-start',
   } = props;
-
-  // const { t, i18n } = useTranslation();
-  // const i18n 
-
-  const getLanguage = async () => {
-    const language = await AsyncStorage.getItem('language');
-    if (language) {
-      i18n.changeLanguage(JSON.parse(language));
-    }
-  };
-
-  useEffect(() => {
-    getLanguage();
-  }, []);
-
+  const style = styles(theme);
   return (
-    <Text
-      {...props}
-      onPress={onPress}
-      suppressHighlighting
-      style={[
-        TYPOGRAPHY[variant],
-        STYLES.fontSize(fontSize ? fontSize : TYPOGRAPHY[variant].fontSize),
-        STYLES.alignSelf(alignSelf),
-        STYLES.color(color ? color : COLORS[theme].text),
-        extraStyle,
-      ]}>
-      {translation ? i18n.t(title) : title}
-      {children}
-    </Text>
+    <>
+      <Text
+        style={[
+          STYLES.fontSize(TYPOGRAPHY[variant].fontSize),
+          STYLES.alignSelf(alignSelf),
+          STYLES.color(color),
+          extraStyle,
+        ]}>
+        {title}
+      </Text>
+      {children && children}
+    </>
   );
 };
-
-export default Wrapper(AppText);
+export default AppText;

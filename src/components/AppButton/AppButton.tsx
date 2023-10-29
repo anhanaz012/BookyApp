@@ -1,45 +1,39 @@
-/* eslint-disable react/react-in-jsx-scope */
-import React from 'react';
-import {TouchableOpacity} from 'react-native';
-import {COLORS, FONTS, STYLES} from 'src/assets/theme';
+import {TouchableOpacity, Text} from 'react-native';
 import {AppButtonProps} from 'src/types/AppButtonTypes';
+import {styles} from './styles';
 import AppText from '../AppText/AppText';
-import Wrapper from '../Wrapper/Wrapper';
-import {styles as styling} from './styles';
+import {STYLES} from 'src/assets/theme';
 
 const AppButton: React.FC<AppButtonProps> = props => {
   const {
-    extraStyle,
-    onPress,
-    title,
     variant = 'filled',
-    SVGLeft = null,
-    SVGRight = null,
-    onPressIcon = () => {},
-    theme,
+    title,
+    extraStyle = {container: {}, text: {}},
+    onPress = () => {},
+    disabled = false,
+    children = null,
+    textVariant = 'body1',
+    textColor,
+    textAlign,
   } = props;
-  const styles = styling(theme);
-
+  const style = styles(variant);
   return (
-    <TouchableOpacity
-      {...props}
-      activeOpacity={0.8}
-      style={[styles.button(variant === 'outlined'), extraStyle?.button]}
-      onPress={onPress}>
-      {SVGLeft}
-      <AppText
+    <>
+      <TouchableOpacity
+        style={[style.container, extraStyle.container]}
+        disabled={disabled}
         onPress={onPress}
-        title={title}
-        color={
-          variant === 'outlined' ? COLORS[theme].primary : COLORS[theme].white
-        }
-        variant="body1"
-        extraStyle={[STYLES.fontFamily(FONTS.primarySemi), extraStyle?.title]}
-        alignSelf="center"
-      />
-      {SVGRight}
-    </TouchableOpacity>
+        {...props}>
+        <AppText
+          title={title}
+          variant={textVariant}
+          alignSelf={textAlign}
+          color={textColor ? textColor : style.text.color}
+          extraStyle={[style.text, extraStyle.text]}
+        />
+        {children && children}
+      </TouchableOpacity>
+    </>
   );
 };
-
-export default Wrapper(AppButton);
+export default AppButton;

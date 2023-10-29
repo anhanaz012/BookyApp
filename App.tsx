@@ -1,14 +1,15 @@
-import {StatusBar} from 'react-native';
-import {Text} from 'react-native';
-import {Provider} from 'react-redux';
-import {COLORS} from 'src/assets/theme';
-import AppNavigator from 'src/navigation';
-import store from 'src/store';
+import AppButton from 'src/components/AppButton/AppButton';
+import AppText from 'src/components/AppText/AppText';
 
 const App: React.FC = () => {
   return (
-    <Text>Hello</Text>
-  )
+    <AppButton
+      title="Submit"
+      textColor="red"
+      variant="outlined"
+      textVariant="body2"
+      textAlign={'center'}
+    />
+  );
 };
-
 export default App;

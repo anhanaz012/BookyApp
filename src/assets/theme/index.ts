@@ -13,7 +13,7 @@ const normalizeFont = (size: number) => platformiOS(size + 3, size + 3);
 export const COMMON_COLORS = {
   black: '#000',
   white: '#fff',
-  primary: 'rgba(242, 121, 53, 1)',
+  primary: '#3DABF8',
   primaryLight: 'rgba(242, 121, 53, 0.5)',
   glassBlack: 'rgba(0,0,0,0.5)',
   gray: '#898A8D',
