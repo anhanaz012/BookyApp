@@ -1,26 +1,40 @@
-import {
-  FlexAlignType,
-  StyleProp,
-  TextStyle,
-  ViewStyle,
-} from 'react-native/types';
-import {Typography} from './StyleTypes';
+// import {
+//   FlexAlignType,
+//   StyleProp,
+//   TextStyle,
+//   ViewStyle,
+// } from 'react-native/types';
+// import {Typography} from './StyleTypes';
 
-export interface SVGProps {
-  width?: number;
-  height?: number;
-  fill?: string;
-}
+// export interface SVGProps {
+//   width?: number;
+//   height?: number;
+//   fill?: string;
+// }
 
-type Styles = {
-  container?: StyleProp<ViewStyle>;
-  subContainer?: StyleProp<ViewStyle>;
-  title?: StyleProp<TextStyle>;
-};
+// type Styles = {
+//   container?: StyleProp<ViewStyle>;
+//   subContainer?: StyleProp<ViewStyle>;
+//   title?: StyleProp<TextStyle>;
+// };
 
-export type IconProps = {
+// export type IconProps = {
+//   SVGIcon: any;
+//   title?: string | number;
+//   color?: string;
+//   variant?: Typography;
+//   alignSelf?: FlexAlignType;
+//   iconLeft?: boolean;
+//   mB?: number;
+//   mL?: number;
+//   mR?: number;
+//   extraStyle?: Styles;
+//   onPress?: () => void;
+// };
+
+export interface IconProps {
   SVGIcon: any;
-  title?: string | number;
+  title?: string ;
   color?: string;
   variant?: Typography;
   alignSelf?: FlexAlignType;
@@ -29,5 +43,4 @@ export type IconProps = {
   mL?: number;
   mR?: number;
   extraStyle?: Styles;
-  onPress?: () => void;
-};
+}

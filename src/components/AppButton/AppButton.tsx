@@ -3,6 +3,7 @@ import {AppButtonProps} from 'src/types/AppButtonTypes';
 import {styles} from './styles';
 import AppText from '../AppText/AppText';
 import {STYLES} from 'src/assets/theme';
+import { SVG } from 'src/assets/svg';
 
 const AppButton: React.FC<AppButtonProps> = props => {
   const {
@@ -14,6 +15,8 @@ const AppButton: React.FC<AppButtonProps> = props => {
     children = null,
     textVariant = 'body1',
     textColor,
+    SVGLeft = null,
+    SVGRight = null,
     textAlign,
   } = props;
   const style = styles(variant);
@@ -24,6 +27,7 @@ const AppButton: React.FC<AppButtonProps> = props => {
         disabled={disabled}
         onPress={onPress}
         {...props}>
+        
         <AppText
           title={title}
           variant={textVariant}
